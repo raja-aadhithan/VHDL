@@ -1,2 +1,2 @@
 # VHDL
-VHDL codes for small circuits as LAb work
+VHDL codes for small circuits as Lab work
