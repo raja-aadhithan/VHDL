@@ -87,3 +87,125 @@ architecture mux16 of mux is
 		
 		m15 : mux2 port map(w(12),w(13),s(0),y);
 end mux16;
+
+
+--testbench
+
+library ieee;
+use ieee.std_logic_1164.all;
+entity mux_tb is end mux_tb;
+ 
+architecture behavior of mux_tb is 
+	component mux
+    port( i : IN  std_logic_vector(0 to 15); s : IN  std_logic_vector(0 to 3);
+         y : OUT  std_logic);
+   end component;
+    
+   signal a : std_logic_vector(0 to 15);
+   signal s : std_logic_vector(0 to 3);
+   signal y : std_logic;
+   
+	begin 
+   uut: mux port map ( i => a, s => s, y => y ); 
+
+   stim_proc: process
+   begin		
+      a <= "0000000000000000";
+		s <= "0000";
+		a(0) <= '0';
+      wait for 10 ns;	
+		a(0) <= '1';
+		wait for 10 ns;
+
+		s <= "0001";
+		a(1) <= '0';
+      wait for 10 ns;	
+		a(1) <= '1';
+		wait for 10 ns;
+
+		s <= "0010";
+		a(2) <= '0';
+      wait for 10 ns;	
+		a(2) <= '1';
+		wait for 10 ns;
+
+		s <= "0011";
+		a(3) <= '0';
+      wait for 10 ns;	
+		a(3) <= '1';
+		wait for 10 ns;
+		
+		s <= "0100";
+		a(4) <= '0';
+      wait for 10 ns;	
+		a(4) <= '1';
+		wait for 10 ns;
+
+		s <= "0101";
+		a(5) <= '0';
+      wait for 10 ns;	
+		a(5) <= '1';
+		wait for 10 ns;
+
+		s <= "0110";
+		a(6) <= '0';
+      wait for 10 ns;	
+		a(6) <= '1';
+		wait for 10 ns;
+
+		s <= "0111";
+		a(7) <= '0';
+      wait for 10 ns;	
+		a(7) <= '1';
+		wait for 10 ns;
+		
+		s <= "1000";
+		a(8) <= '0';
+      wait for 10 ns;	
+		a(8) <= '1';
+		wait for 10 ns;
+
+		s <= "1001";
+		a(9) <= '0';
+      wait for 10 ns;	
+		a(9) <= '1';
+		wait for 10 ns;
+
+		s <= "1010";
+		a(10) <= '0';
+      wait for 10 ns;	
+		a(10) <= '1';
+		wait for 10 ns;
+
+		s <= "1011";
+		a(11) <= '0';
+      wait for 10 ns;	
+		a(11) <= '1';
+		wait for 10 ns;
+		
+		s <= "1100";
+		a(12) <= '0';
+      wait for 10 ns;	
+		a(12) <= '1';
+		wait for 10 ns;
+
+		s <= "1101";
+		a(13) <= '0';
+      wait for 10 ns;	
+		a(13) <= '1';
+		wait for 10 ns;
+
+		s <= "1110";
+		a(14) <= '0';
+      wait for 10 ns;	
+		a(14) <= '1';
+		wait for 10 ns;
+
+		s <= "1111";
+		a(15) <= '0';
+      wait for 10 ns;	
+		a(15) <= '1';
+		wait for 10 ns;
+
+   end process;
+end;

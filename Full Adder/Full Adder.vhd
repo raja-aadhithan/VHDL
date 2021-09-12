@@ -183,7 +183,7 @@ architecture behavior of full_adder_tb is
 	
 	a <= '0', '1' after 400 ns;
 	b <= '0', '1' after 200 ns, '0' after 400 ns, '1' after 600 ns;
- cin<='0','1' after 100 ns,'0' after 200 ns,'1' after 300 ns,'0' after 400ns,'1' after 500 ns,'0' after 600 ns,'1' after 700 ns;
+ cin<='0','1' after 100 ns,'0' after 200 ns,'1' after 300 ns,'0' after 400 ns,'1' after 500 ns,'0' after 600 ns,'1' after 700 ns;
 
 end behavior; 
 
