@@ -28,17 +28,17 @@ use ieee.std_logic_unsigned.all;
 entity count is port (clk,u_d,rst : in std_logic; q : out std_logic_vector(3 downto 0)); end count;
 
 architecture behaviour of count is 
-	signal temp : std_logic_vector(3 downto 0);
+	shared variable temp : std_logic_vector(3 downto 0);
 	begin process(clk) -- synchronous reset
 		begin 
-		if (clk = '1')then
-		if (rst = '1') then temp <= "0000";
-		elsif (rst = '0') then
-			if (u_d = '0') then temp <= temp + 1; -- up if 0
-			elsif (u_d = '1') then temp <= temp - 1; -- down if 1
-			else temp <= temp;
+		if (clk = '1') then
+			if (rst = '1') then temp := "0000";
+			elsif (rst = '0') then
+				if (u_d = '0') then temp := temp + 1; -- up if 0
+				elsif (u_d = '1') then temp := temp - 1; -- down if 1
+				else temp := temp;
+				end if;
 			end if;
-		end if;
 		end if;
 		q <= temp;
 	end process;
